@@ -41,15 +41,31 @@
 	    processData: false,
 	    contentType: false,
 	    success: function(res){
-	      console.log(this);
-	      console.log(res);
+	      console.log("success");
+	    	console.log(res.url.path);
+	    	event.data.el.setAttribute('src', res.url.path);
 	    },
 	    done: function(){
 	    	console.log('done');
 	    	console.log(this);
+	    },
+	    complete: function(res){
+	    	console.log("complete");
+	    	console.log(res);
+	    	if(res.status == 200){
+	    		// event.data.el.setAttribute('src',)
+	    	}
+	    },
+	    error: function(res){
+	    	console.log("error");
+	    	console.log(res);
 	    }
 
 	  });
 	}
+
+	// console.log(event.data.el.setAttribute('src',))
+
+
 });
 </script>
