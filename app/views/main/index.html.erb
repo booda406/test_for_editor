@@ -14,9 +14,9 @@
 <script type="text/javascript">
 
   var editor = AlloyEditor.editable('myContentEditable', {
-	imageUploadUrl: "<%=save_image_path%>",
-	uploadUrl: "<%=save_image_path%>",
-	extraPlugins: AlloyEditor.Core.ATTRS.extraPlugins.value + ',filebrowser,popup,uploadimage,uploadwidget,filetools,notificationaggregator,notification,toolbar,image'
+	// imageUploadUrl: "<%=save_image_path%>",
+	// uploadUrl: "<%=save_image_path%>",
+	// extraPlugins: AlloyEditor.Core.ATTRS.extraPlugins.value + ',filebrowser,popup,uploadimage,uploadwidget,filetools,notificationaggregator,notification,toolbar,image'
   });
 
   editor.get('nativeEditor').on('imageAdd', function(event) {
@@ -28,10 +28,8 @@
 
 
 	if (formdata) {
-	  console.log(event.data.file);
 	  formdata.append("images[]", event.data.file);
 	  console.log("append to formData");
-	  console.log(formdata);
 	}
 
 
@@ -42,10 +40,15 @@
 	    data: formdata,
 	    processData: false,
 	    contentType: false,
-	    success: function (res) {
-	      // document.getElementById("response").innerHTML = res; 
+	    success: function(res){
+	      console.log(this);
 	      console.log(res);
+	    },
+	    done: function(){
+	    	console.log('done');
+	    	console.log(this);
 	    }
+
 	  });
 	}
 });
