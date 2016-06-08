@@ -1,0 +1,52 @@
+<link href="<%= Rails.root + '/alloy-editor/assets/alloy-editor-ocean-min.css' %>" rel="stylesheet">
+<script src="<%= Rails.root + '/alloy-editor/alloy-editor-all-min.js' %>"></script>
+
+<div id="myContentEditable" style="margin-left:50px;margin-top:100px;">
+	hola
+
+
+
+
+
+	tes
+</div>
+
+<script type="text/javascript">
+
+  var editor = AlloyEditor.editable('myContentEditable', {
+	imageUploadUrl: "<%=save_image_path%>",
+	uploadUrl: "<%=save_image_path%>",
+	extraPlugins: AlloyEditor.Core.ATTRS.extraPlugins.value + ',filebrowser,popup,uploadimage,uploadwidget,filetools,notificationaggregator,notification,toolbar,image'
+  });
+
+  editor.get('nativeEditor').on('imageAdd', function(event) {
+
+	if (window.FormData) {
+	formdata = new FormData();
+	console.log("create FormData");
+	}
+
+
+	if (formdata) {
+	  console.log(event.data.file);
+	  formdata.append("images[]", event.data.file);
+	  console.log("append to formData");
+	  console.log(formdata);
+	}
+
+
+	if (formdata) {
+	  $.ajax({
+	    url: "<%=save_image_path%>",
+	    type: "POST",
+	    data: formdata,
+	    processData: false,
+	    contentType: false,
+	    success: function (res) {
+	      // document.getElementById("response").innerHTML = res; 
+	      console.log(res);
+	    }
+	  });
+	}
+});
+</script>
