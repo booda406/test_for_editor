@@ -177,6 +177,11 @@
 .ae-icon-video:before {
 	content: "\";
 }
+
+.ae-icon-youtube {
+  background-image:url("/alloy-editor/plugins/youtube/images/icon.png");
+  filter: none !important;
+}
 @charset "UTF-8";
 /** GENERAL VARIABLES */
 /** COMPONENT VARIABLES **/

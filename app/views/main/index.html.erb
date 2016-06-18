@@ -1,4 +1,4 @@
-<link href="<%= Rails.root + '/alloy-editor/assets/alloy-editor-ocean-min.css' %>" rel="stylesheet">
+<link href="<%= Rails.root + '/alloy-editor/assets/alloy-editor-ocean.css' %>" rel="stylesheet">
 <script src="<%= Rails.root + '/alloy-editor/alloy-editor-all-min.js' %>"></script>
 
 <div id="myContentEditable" style="margin-left:50px;margin-top:100px;">
@@ -16,7 +16,17 @@
   var editor = AlloyEditor.editable('myContentEditable', {
 	// imageUploadUrl: "<%=save_image_path%>",
 	// uploadUrl: "<%=save_image_path%>",
-	// extraPlugins: AlloyEditor.Core.ATTRS.extraPlugins.value + ',filebrowser,popup,uploadimage,uploadwidget,filetools,notificationaggregator,notification,toolbar,image'
+	extraPlugins: AlloyEditor.Core.ATTRS.extraPlugins.value + ',ae_uibridge,ae_buttonbridge,youtube',
+	toolbars: {
+		add: {
+        buttons: ['image', 'Youtube', 'link', 'camera', 'hline', 'table'],
+        tabIndex: 2
+    },
+    styles: {
+        selections: AlloyEditor.Selections,
+        tabIndex: 1
+    }
+	}
   });
 
   editor.get('nativeEditor').on('imageAdd', function(event) {
