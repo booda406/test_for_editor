@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   post 'main/image' => 'main#save_image', as: :save_image
   post 'main/froala_image' => 'main#save_image_froala', as: :save_image_froala
+  post 'main/froala_content' => 'main#save_content_froala', as: :save_content_froala
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -28,4 +28,8 @@ class MainController < ApplicationController
 		render json: json		
 	end
 
+	def save_content_froala
+		
+	end
+
 end

@@ -24,9 +24,21 @@
 
   <!-- Create a tag that we will use as the editable area.
        You can use a div tag as well. -->
+  <div id="froala-editor" style="display:inline-block;">
+    Click here to edit this text in a Froala popup.
+  </div>
+  <button id="saveButton">Save</button>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
   <form>
     <textarea id="edit" name="content"></textarea>
   </form>
+  <br/>
+  
+  <!-- <div id="preview" class="fr-view"></div> -->
 
   <!-- Include JS files. -->
   <script type="text/javascript" src="/froala_editor/js/froala_editor.min.js"></script>
@@ -70,7 +82,25 @@
       $(function() {
           $('#edit').froalaEditor({
             imageUploadURL: '<%=save_image_froala_path%>',
-            imageUploadParams: {'authenticity_token': $('meta[name="csrf-token"]').attr('content')}
+            imageUploadParams: {'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
+            toolbarInline: true,
+            charCounterCount: false,
+            toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'emoticons', '-', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', '-', 'insertImage', 'insertLink', 'insertFile', 'insertVideo', 'undo', 'redo'],
+            saveInterval: 2500,
+            saveURL: '<%=save_content_froala_path%>',
           })
+
+
+          $('div#froala-editor').froalaEditor({
+            editInPopup: true,
+            saveParam: 'content',
+            saveURL: 'http://example.com/save',
+          })
+          $('#saveButton').click (function () {
+            $('#froala-editor').froalaEditor('save.save')
+          })
+          // .on('froalaEditor.contentChanged', function(e, editor){
+          //   $('#preview').html(editor.html.get());
+          // });
       });
   </script>
