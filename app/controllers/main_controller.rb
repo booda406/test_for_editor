@@ -13,4 +13,8 @@ class MainController < ApplicationController
 		render json: json
 	end
 
+	def froala_editor
+		
+	end
+
 end

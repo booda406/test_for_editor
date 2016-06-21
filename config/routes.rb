@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'main#index'
 
+  get 'main/froala_editor' => 'main#froala_editor'
+
   post 'main/image' => 'main#save_image', as: :save_image
 
   # Example of regular route:
