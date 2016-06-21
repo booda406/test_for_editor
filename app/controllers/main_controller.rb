@@ -17,4 +17,15 @@ class MainController < ApplicationController
 		
 	end
 
+	def save_image_froala
+		image = params[:file]
+		filename = image.original_filename
+		File.open(File.join(Rails.root, 'public', 'images', filename), 'wb') { |f| f.write image.tempfile.read }
+		url = '/images/' + filename
+		Rails.logger.debug "#{url}"
+		json = {uploaded: 1, fileName: filename, link: url}.to_json
+		Rails.logger.debug "#{json}"
+		render json: json		
+	end
+
 end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'main/froala_editor' => 'main#froala_editor'
 
   post 'main/image' => 'main#save_image', as: :save_image
+  post 'main/froala_image' => 'main#save_image_froala', as: :save_image_froala
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

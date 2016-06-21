@@ -68,6 +68,9 @@
   <!-- Initialize the editor. -->
   <script>
       $(function() {
-          $('#edit').froalaEditor()
+          $('#edit').froalaEditor({
+            imageUploadURL: '<%=save_image_froala_path%>',
+            imageUploadParams: {'authenticity_token': $('meta[name="csrf-token"]').attr('content')}
+          })
       });
   </script>
